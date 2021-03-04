@@ -2,9 +2,9 @@ package com.task1;
 
 public class Espncricinfo {
 	private final int SIZE = 50;
-	private Batsman[] batsmans = new Batsman[50];
+	private Batsman[] batsmans = new Batsman[SIZE];
 	private int noOfBatsmen;
-	//private static int id=0;
+	static int i=0;
 	
 	public Batsman[] getBatsmans() {
 		return batsmans;
@@ -17,6 +17,8 @@ public class Espncricinfo {
 			int ballsFaced,int fours,int sixes){
 		if(getNoOfBatsmen()<SIZE-1){
 			Batsman b = new Batsman(id,name,runScored,centuries,halfCenturies,ballsFaced,fours,sixes);
+			batsmans[i++] = b;
+			//System.out.println(batsmans[i-1]);
 			return b.getId();
 		}
 		else{
@@ -29,20 +31,23 @@ public class Espncricinfo {
 		boolean status = true;
 		Batsman returnObj = new Batsman();
 		for(int i=0;i<batsmans.length;i++){
-			if(id == batsmans[i].getId())
-			{
-				status = false;
-				batsmans[i].setRunScored(runScored);
-				batsmans[i].setCenturies(centuries);
-				batsmans[i].setHalfCenturies(halfCenturies);
-				batsmans[i].setBallsFaced(ballsFaced);
-				batsmans[i].setFours(fours);
-				batsmans[i].setSixes(sixes);
-				returnObj= batsmans[i];
-				break;
+			
+			if(batsmans[i] != null){
+				
+				if(id == batsmans[i].getId()){
+					status = false;
+					batsmans[i].setRunScored(runScored);
+					batsmans[i].setCenturies(centuries);
+					batsmans[i].setHalfCenturies(halfCenturies);
+					batsmans[i].setBallsFaced(ballsFaced);
+					batsmans[i].setFours(fours);
+					batsmans[i].setSixes(sixes);
+					returnObj= batsmans[i];
+					break;
+				}
+				else
+					status = true;
 			}
-			else
-				status = true;
 		}
 		
 		if(status)
@@ -59,6 +64,9 @@ public class Espncricinfo {
 		boolean status = true;
 		Batsman returnObj = new Batsman();
 		for(int i=0;i<batsmans.length;i++){
+			
+			
+			
 			if(batsmanId == batsmans[i].getId())
 			{
 				
@@ -78,6 +86,20 @@ public class Espncricinfo {
 		{
 			return returnObj;
 		}
+	}
+	
+	public void getBatsmanAllDetails(){
+		for(int j=0;j<batsmans.length;j++){
+			if(batsmans[j]!=null)
+				System.out.println(batsmans[j]);
+			else 
+				break;
+		}
+	}
+	
+	public void getBatsmanDetails(Batsman b)
+	{
+		System.out.println(b);//b calls by default toString() i.e b.toString()
 	}
 	
 }

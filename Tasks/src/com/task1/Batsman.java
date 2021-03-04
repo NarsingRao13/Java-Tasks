@@ -1,4 +1,5 @@
 package com.task1;
+import java.math.*;
 
 public class Batsman {
 	private String name;
@@ -23,8 +24,20 @@ public class Batsman {
 	}
 	
 	float getStrikeRate(){
-		return Math.round(((runScored*100) / ballsFaced)*100)/100;
+		
+		//float f = roundFloat(2343.0f, 2);
+	    //System.out.println("Rounded Float: "+f);
+		float res= (float)((runScored*100)/ballsFaced);
+		//System.out.println("StrikeRate: "+res);
+		return roundFloat(res, 2);
 	}
+	
+	private static float roundFloat(float f, int places) {
+		 
+        BigDecimal bigDecimal = new BigDecimal(Float.toString(f));
+        bigDecimal = bigDecimal.setScale(places, RoundingMode.HALF_UP);
+        return bigDecimal.floatValue();
+    }
 	
 	int getRunsScoredInBoundaries(){
 		return ( 4 * fours + 6 * sixes );
@@ -109,6 +122,14 @@ public class Batsman {
 	public void setSixes(int sixes) {
 		this.sixes = sixes;
 	}
+
+	@Override
+	public String toString() {
+		return "Batsman [ id=" + this.id + ", name=" + this.name + ", runScored=" + this.runScored + ", centuries=" + this.centuries + ", halfCenturies="
+				+ this.halfCenturies + ", ballsFaced=" + this.ballsFaced + ", fours=" + this.fours + ", sixes=" + this.sixes
+				+ "]";
+	}
+	
 	
 	
 	
