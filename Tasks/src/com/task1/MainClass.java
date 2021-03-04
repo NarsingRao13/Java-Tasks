@@ -9,7 +9,8 @@ public class MainClass {
 		ob1.getBatsmanAllDetails();
 		ob1.getBatsmanDetails(ob1.updateBatsmanStats(1, 21, 243, 78, 235, 10879, 19009));
 		ob1.getBatsmanDetails(ob1.getBatsman(2));
-	///	ob1.getBatsmanAllDetails();
+		ob1.addBatsman(5, "ug", 54, 4, 6565, 454, 854, 6465);
+		ob1.getBatsmanAllDetails();
 		////System.out.println(ob1.getNoOfBatsmen());
 	}
 
